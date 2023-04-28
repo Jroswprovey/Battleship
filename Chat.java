@@ -2,7 +2,7 @@ import java.net.*;
 import java.io.*;
 
 public class Chat {
-    private static final int PORT = 694201337;
+    private static final int PORT = 6969;
 
     public static void main(String[] args) {
         ServerSocket serverSocket = null;
