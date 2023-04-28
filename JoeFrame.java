@@ -21,8 +21,17 @@ public class JoeFrame extends JFrame {
     }
 
     public JoeFrame(){
-        Toolkit.getDefaultToolkit().getScreenSize();
-        System.out.println(Toolkit.getDefaultToolkit().getScreenSize());
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //dynamically sizes window to screen size
+        Len = ((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight())/2;
+        Hei = ((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth())/2;
+
+        setSize(Len,Hei);
+
+
+        setVisible(true);
+
+
 
 
     }
