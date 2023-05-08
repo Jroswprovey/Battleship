@@ -8,33 +8,38 @@ public class JoeFrame extends JFrame {
 
     public JoeFrame(int len, int hei){
         //constructor method
-        Len = len;
-        Hei = hei;
         setTitle("Battleship");
 
+        Len = len;
+        Hei = hei;
         setSize(Len, Hei);
 
 
+        JMenuBar MenuBar = new JMenuBar();
+        JMenu GameMenu = new JMenu("Game Menu");
+
+        JMenuItem StartItem = new JMenuItem("Start Game");
+        JMenuItem ConnectItem = new JMenuItem("Connect");
+
+
+
+
+
+        MenuBar.add(GameMenu);
+
+        this.setJMenuBar(MenuBar);
+
+
+
+
+
+
 
 
         setVisible(true);
     }
 
-    public JoeFrame(){
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //dynamically sizes window to screen size
-        Len = ((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight())/2;
-        Hei = ((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth())/2;
 
-        setSize(Len,Hei);
-
-
-        setVisible(true);
-
-
-
-
-    }
 
     public int getHei() {
         return Hei;

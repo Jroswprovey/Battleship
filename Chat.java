@@ -1,10 +1,13 @@
 import java.net.*;
 import java.io.*;
 
+
+
+
 public class Chat {
     private static final int PORT = 6969;
 
-    public static void main(String[] args) {
+    public static void chat(String[] args) {
         ServerSocket serverSocket = null;
         Socket clientSocket = null;
 

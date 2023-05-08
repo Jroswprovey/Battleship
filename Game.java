@@ -1,20 +1,13 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class Game {
 
     public static void start(){
         System.out.println("Starting Game...");
+        System.out.println("Initializing UI");
 
-        JoeFrame JoeGame = new JoeFrame();
-
-
-
-        JPanel Chat = new JPanel();
-        Chat.setSize(JoeGame.getHei()/4,JoeGame.getLen());
-        Chat.setBackground(new java.awt.Color(44, 44, 52));
-
-        JoeGame.add(Chat);
-
+        JoeFrame JoeGame = new JoeFrame(400,650);
 
 
 
