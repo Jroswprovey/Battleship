@@ -1,9 +1,8 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class JoeFrame extends JFrame implements ActionListener {
+public class GameWindow extends JFrame implements ActionListener {
 
     private int Len;
     private int Hei;
@@ -17,7 +16,7 @@ public class JoeFrame extends JFrame implements ActionListener {
 
 
 
-    public JoeFrame(int len, int hei){
+    public GameWindow(int len, int hei){
         //constructor method
         setTitle("Battleship");
 
@@ -36,6 +35,7 @@ public class JoeFrame extends JFrame implements ActionListener {
         ConnectItem = new JMenuItem("Connect");
 
         StartItem.addActionListener(this);
+        ConnectItem.addActionListener(this);
 
 
         GameMenu.add(StartItem);
@@ -47,17 +47,16 @@ public class JoeFrame extends JFrame implements ActionListener {
 
         this.setJMenuBar(MenuBar);
 
-
-
+        setLocationRelativeTo(null);
 
 
 
 
 
         setVisible(true);
+
+
     }
-
-
 
     public int getHei() {
         return Hei;
@@ -69,9 +68,18 @@ public class JoeFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==StartItem){
+
+        if (e.getSource()==StartItem){
             System.out.println("Clicked");
+        }
+
+
+        if (e.getSource()==ConnectItem){
+            System.out.println("ConnectItem Clicked");
+
 
         }
+
+
     }
 }
