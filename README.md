@@ -1,3 +1,3 @@
 # Battleship
 
-Game (Maybe)
+GameHandler (Maybe)

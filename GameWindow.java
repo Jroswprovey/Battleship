@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,10 +26,21 @@ public class GameWindow extends JFrame implements ActionListener {
         setSize(Len, Hei);
 
 
+
+
         MenuBar = new JMenuBar();
         GameMenu = new JMenu("Game Menu");
 
         Game = new JPanel();
+
+
+        Game.setBounds(10,10, 10,10);
+        Game.setBackground(Color.BLACK);
+
+
+
+
+
         Chat = new JPanel();
 
         StartItem = new JMenuItem("Start Game");
@@ -40,6 +52,8 @@ public class GameWindow extends JFrame implements ActionListener {
 
         GameMenu.add(StartItem);
         GameMenu.add(ConnectItem);
+
+        add(Game);
 
 
 
@@ -53,7 +67,11 @@ public class GameWindow extends JFrame implements ActionListener {
 
 
 
+
+
         setVisible(true);
+
+
 
 
     }
@@ -76,6 +94,10 @@ public class GameWindow extends JFrame implements ActionListener {
 
         if (e.getSource()==ConnectItem){
             System.out.println("ConnectItem Clicked");
+            ConnectPopupWindow ConnectWindow = new ConnectPopupWindow();
+            ConnectWindow.setVisiblecool(true);
+
+
 
 
         }
