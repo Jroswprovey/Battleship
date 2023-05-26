@@ -15,9 +15,7 @@ public class GameWindow extends JFrame implements ActionListener {
     JPanel Game;
     JPanel Chat;
 
-
-
-    public GameWindow(int len, int hei){
+    public GameWindow(int len, int hei) {
         //constructor method
         setTitle("Battleship");
 
@@ -25,21 +23,8 @@ public class GameWindow extends JFrame implements ActionListener {
         Hei = hei;
         setSize(Len, Hei);
 
-
-
-
         MenuBar = new JMenuBar();
         GameMenu = new JMenu("Game Menu");
-
-        Game = new JPanel();
-
-
-        Game.setBounds(10,10, 10,10);
-        Game.setBackground(Color.BLACK);
-
-
-
-
 
         Chat = new JPanel();
 
@@ -49,31 +34,41 @@ public class GameWindow extends JFrame implements ActionListener {
         StartItem.addActionListener(this);
         ConnectItem.addActionListener(this);
 
-
         GameMenu.add(StartItem);
         GameMenu.add(ConnectItem);
 
-        add(Game);
-
-
-
         MenuBar.add(GameMenu);
+        setJMenuBar(MenuBar);
 
-        this.setJMenuBar(MenuBar);
+        setLayout(new BorderLayout()); // Use BorderLayout for the JFrame
+
+        JPanel gridPanel = new JPanel(new GridLayout(0, 11)); // Create a grid panel with 11 columns
+
+        // Add a null space in the top left corner
+        gridPanel.add(new JLabel("", SwingConstants.CENTER));
+
+        // Add labels for letters A to J at the top
+        for (char ch = 'A'; ch <= 'J'; ch++) {
+            JLabel label = new JLabel(String.valueOf(ch), SwingConstants.CENTER);
+            gridPanel.add(label);
+        }
+
+        // Add labels for numbers 1 to 10 on the left side and buttons for the cells
+        for (int i = 1; i <= 10; i++) {//Labels
+            JLabel label = new JLabel(String.valueOf(i), SwingConstants.CENTER);
+            gridPanel.add(label);
+
+
+            for (int j = 1; j <= 10; j++) {//Buttons
+                JButton button = new JButton(String.valueOf((i - 1) * 10 + j));
+                gridPanel.add(button);
+            }
+        }
+
+        add(gridPanel, BorderLayout.CENTER);
 
         setLocationRelativeTo(null);
-
-
-
-
-
-
-
         setVisible(true);
-
-
-
-
     }
 
     public int getHei() {
@@ -86,22 +81,14 @@ public class GameWindow extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource()==StartItem){
+        if (e.getSource() == StartItem) {
             System.out.println("Clicked");
         }
 
-
-        if (e.getSource()==ConnectItem){
+        if (e.getSource() == ConnectItem) {
             System.out.println("ConnectItem Clicked");
             ConnectPopupWindow ConnectWindow = new ConnectPopupWindow();
-            ConnectWindow.setVisiblecool(true);
-
-
-
-
+            ConnectWindow.setVisible(true);
         }
-
-
     }
 }

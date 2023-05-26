@@ -7,19 +7,6 @@ public class GameHandler {
         GameWindow JoeGame = new GameWindow(400,650);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
 
