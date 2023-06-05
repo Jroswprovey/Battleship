@@ -1,3 +1,5 @@
 # Battleship
 
-GameHandler (Maybe)
+Worst battleship game ever.
+
+
