@@ -44,7 +44,7 @@ public class GameWindow extends JFrame implements ActionListener {
 
         JPanel gridPanel = new JPanel(new GridLayout(0, 11)); // Create a grid panel with 11 columns
 
-        // Add a null space in the top left corner
+        // Add a null space in the top right corner
         gridPanel.add(new JLabel("", SwingConstants.CENTER));
 
         // Add labels for letters A to J at the top
@@ -54,13 +54,12 @@ public class GameWindow extends JFrame implements ActionListener {
         }
 
         // Add labels for numbers 1 to 10 on the left side and buttons for the cells
-        for (int i = 1; i <= 10; i++) {//Labels
+        for (int i = 1; i <= 10; i++) {
             JLabel label = new JLabel(String.valueOf(i), SwingConstants.CENTER);
             gridPanel.add(label);
-
-
-            for (int j = 1; j <= 10; j++) {//Buttons
+            for (int j = 1; j <= 10; j++) {
                 JButton button = new JButton(String.valueOf((i - 1) * 10 + j));
+                button.addActionListener(this); // Assign ActionListener to the button
                 gridPanel.add(button);
             }
         }
@@ -90,5 +89,16 @@ public class GameWindow extends JFrame implements ActionListener {
             ConnectPopupWindow ConnectWindow = new ConnectPopupWindow();
             ConnectWindow.setVisible(true);
         }
+
+        if (e.getSource() instanceof JButton) {
+            JButton clickedButton = (JButton) e.getSource();
+
+            ((JButton) e.getSource()).setForeground(Color.red);
+
+            String buttonText = clickedButton.getText();
+            System.out.println("Button Clicked: " + buttonText);
+        }
     }
+
+
 }
