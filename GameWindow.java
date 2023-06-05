@@ -111,20 +111,7 @@ public class GameWindow extends JFrame implements ActionListener {
 
             if (e.getSource() == StartServerItem){
                 //Here alex you bimbo slut whore cum loving butt sucking herbivore
-                Server server = new Server();
-                server.start(8080);
-                Socket socket = new Socket();
-                try {
-                    socket.connect(new InetSocketAddress("google.com", 80));
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                System.out.println("Server IP: " + String.valueOf(socket.getLocalAddress()).substring(1));
-                try {
-                    socket.close();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
+
             }
 
         }
