@@ -3,8 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.Socket;
+import java.util.ArrayList;
+
 
 public class GameWindow extends JFrame implements ActionListener {
 
@@ -20,6 +20,8 @@ public class GameWindow extends JFrame implements ActionListener {
 
     JPanel Game;
     JPanel Chat;
+
+    ArrayList<Integer> placedMineArray = new ArrayList<Integer>();
 
 
 
@@ -89,6 +91,16 @@ public class GameWindow extends JFrame implements ActionListener {
         return Len;
     }
 
+    public boolean HasBeenClicked(int PushedButton ){
+        for(int i = 0; i < placedMineArray.size(); i++){
+            if(PushedButton == placedMineArray.get(i)){
+                return true;
+
+            }else return false;
+        }
+        return false;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == StartItem) {
@@ -107,9 +119,23 @@ public class GameWindow extends JFrame implements ActionListener {
             ((JButton) e.getSource()).setForeground(Color.red);
 
             String buttonText = clickedButton.getText();
+
+            int buttonNumber = Integer.parseInt(clickedButton.getText());
+
             System.out.println("Button Clicked: " + buttonText);
 
+            if(HasBeenClicked(buttonNumber)){
+                System.out.println("a mine has been placed here, you are dead");
+            }else{
+                placedMineArray.add(buttonNumber);
+                System.out.println(placedMineArray);
+            }
+
+
+
         }
+
+
         if (e.getSource() == StartServerItem){
             System.out.println("Starting Server..");
             try {
