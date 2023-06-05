@@ -8,12 +8,17 @@ public class GameWindow extends JFrame implements ActionListener {
     private int Len;
     private int Hei;
 
+
+    JMenuItem StartServerItem;
     JMenuItem StartItem;
     JMenuItem ConnectItem;
     JMenuBar MenuBar;
     JMenu GameMenu;
+
     JPanel Game;
     JPanel Chat;
+
+
 
     public GameWindow(int len, int hei) {
         //constructor method
@@ -30,12 +35,15 @@ public class GameWindow extends JFrame implements ActionListener {
 
         StartItem = new JMenuItem("Start Game");
         ConnectItem = new JMenuItem("Connect");
+        StartServerItem = new JMenuItem("Menu");
 
         StartItem.addActionListener(this);
         ConnectItem.addActionListener(this);
+        StartServerItem.addActionListener(this);
 
         GameMenu.add(StartItem);
         GameMenu.add(ConnectItem);
+        GameMenu.add(StartServerItem);
 
         MenuBar.add(GameMenu);
         setJMenuBar(MenuBar);
@@ -97,6 +105,12 @@ public class GameWindow extends JFrame implements ActionListener {
 
             String buttonText = clickedButton.getText();
             System.out.println("Button Clicked: " + buttonText);
+
+            if (e.getSource() == StartServerItem){
+                //Here alex you bimbo slut whore cum loving butt sucking herbivore
+
+            }
+
         }
     }
 
