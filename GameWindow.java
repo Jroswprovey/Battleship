@@ -110,7 +110,7 @@ public class GameWindow extends JFrame implements ActionListener {
             System.out.println("Button Clicked: " + buttonText);
 
             if (e.getSource() == StartServerItem){
-                //Here alex you bimbo slut whore cum loving butt sucking herbivore
+                //Server.startServer();
 
             }
 
