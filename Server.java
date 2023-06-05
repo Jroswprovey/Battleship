@@ -54,12 +54,12 @@ public class Server {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+   /* public static void main(String[] args) throws IOException {
         Server server = new Server();
         server.start(8080);
         Socket socket = new Socket();
         socket.connect(new InetSocketAddress("google.com", 80));
         System.out.println("Server IP: " + String.valueOf(socket.getLocalAddress()).substring(1));
         socket.close();
-    }
+    }*/
 }
