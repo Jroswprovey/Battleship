@@ -110,7 +110,12 @@ public class GameWindow extends JFrame implements ActionListener {
             System.out.println("Button Clicked: " + buttonText);
 
             if (e.getSource() == StartServerItem){
-                //Server.startServer();
+                System.out.println("Starting Server..");
+                try {
+                    Server.startServer();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
 
             }
 

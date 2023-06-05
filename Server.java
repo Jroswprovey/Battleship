@@ -53,14 +53,15 @@ public class Server {
             e.printStackTrace();
         }
     }
-    public String getIp() throws IOException {
+    public static String getIp() throws IOException {
         Socket socket = new Socket();
         socket.connect(new InetSocketAddress("google.com", 80));
         socket.close();
         return ("Server IP: " + String.valueOf(socket.getLocalAddress()).substring(1));
     }
-    public void startServer(){
+    public static void startServer() throws IOException {
         Server server = new Server();
         server.start(8080);
+        System.out.println("Server Started: " + getIp());
     }
 }
