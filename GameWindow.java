@@ -38,7 +38,7 @@ public class GameWindow extends JFrame implements ActionListener {
 
         StartItem = new JMenuItem("Start Game");
         ConnectItem = new JMenuItem("Connect");
-        StartServerItem = new JMenuItem("Menu");
+        StartServerItem = new JMenuItem("Start server");
 
         StartItem.addActionListener(this);
         ConnectItem.addActionListener(this);
@@ -109,17 +109,18 @@ public class GameWindow extends JFrame implements ActionListener {
             String buttonText = clickedButton.getText();
             System.out.println("Button Clicked: " + buttonText);
 
-            if (e.getSource() == StartServerItem){
-                System.out.println("Starting Server..");
-                try {
-                    Server.startServer();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-
+        }
+        if (e.getSource() == StartServerItem){
+            System.out.println("Starting Server..");
+            try {
+                Server.startServer();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
 
+            //ServerInfo InfoWindow = new ServerInfo();
         }
+
     }
 
 
