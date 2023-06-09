@@ -6,7 +6,7 @@ public class playSound {
     private static Clip clip;
 
     public static void playBomb() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-        File soundFile = new File("C:\\Users\\zowie\\Documents\\GitHub\\Battleship\\Sounds/bomb.wav");
+        File soundFile = new File("/Users/josephrp/IdeaProjects/Battleship/Sounds/bomb.wav");
         AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundFile);
         clip = AudioSystem.getClip();
         clip.open(audioInputStream);

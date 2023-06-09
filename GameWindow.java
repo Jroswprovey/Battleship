@@ -46,7 +46,7 @@ public class GameWindow extends JFrame implements ActionListener {
 
         StartItem.addActionListener(this);
         ConnectItem.addActionListener(this);
-        StartServerItem.addActionListener(this);
+        //StartServerItem.addActionListener(this);
 
         MenuBar.add(PlayerItem);
         GameMenu.add(StartItem);
@@ -76,6 +76,7 @@ public class GameWindow extends JFrame implements ActionListener {
             for (int j = 1; j <= 10; j++) {
                 JButton button = new JButton(String.valueOf((i - 1) * 10 + j));
                 button.addActionListener(this); // Assign ActionListener to the button
+                button.setFocusPainted(false);
                 gridPanel.add(button);
             }
         }
@@ -129,13 +130,14 @@ public class GameWindow extends JFrame implements ActionListener {
             if (hasBeenClicked(buttonNumber)) {
                 // Player died, show pop-up window
 
-
-                JOptionPane.showMessageDialog(this, "You died!", "Game Over", JOptionPane.INFORMATION_MESSAGE);
                 try {
                     playSound.playBomb();
                 } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
                     throw new RuntimeException(ex);
                 }
+
+                JOptionPane.showMessageDialog(this, "You died!", "Game Over", JOptionPane.INFORMATION_MESSAGE);
+
                 // Reset the game
                 placedMineArray.clear();
                 currentPlayerBoolean = true;
