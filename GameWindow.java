@@ -5,12 +5,10 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
 public class GameWindow extends JFrame implements ActionListener {
 
     private int Len;
     private int Hei;
-
 
     JMenuItem StartServerItem;
     JMenuItem StartItem;
@@ -22,12 +20,9 @@ public class GameWindow extends JFrame implements ActionListener {
     JPanel Game;
     JPanel Chat;
 
-
     ArrayList<Integer> placedMineArray = new ArrayList<Integer>();
 
-    boolean currentPlayer = true; //true = Player1 False = Player2
-
-
+    boolean currentPlayerBoolean = true; //true = Player1 False = Player2
 
     public GameWindow(int len, int hei) {
         //constructor method
@@ -56,13 +51,10 @@ public class GameWindow extends JFrame implements ActionListener {
         GameMenu.add(ConnectItem);
         GameMenu.add(StartServerItem);
 
-
         MenuBar.add(GameMenu);
         setJMenuBar(MenuBar);
 
         setLayout(new BorderLayout()); // Use BorderLayout for the JFrame
-
-
 
         JPanel gridPanel = new JPanel(new GridLayout(0, 11)); // Create a grid panel with 11 columns
 
@@ -100,12 +92,11 @@ public class GameWindow extends JFrame implements ActionListener {
         return Len;
     }
 
-    public boolean HasBeenClicked(int PushedButton ){
-        for(int i = 0; i < placedMineArray.size(); i++){
-            if(PushedButton == placedMineArray.get(i)){
+    public boolean hasBeenClicked(int pushedButton) {
+        for (int i = 0; i < placedMineArray.size(); i++) {
+            if (pushedButton == placedMineArray.get(i)) {
                 return true;
-
-            };
+            }
         }
         return false;
     }
@@ -125,7 +116,7 @@ public class GameWindow extends JFrame implements ActionListener {
         if (e.getSource() instanceof JButton) {
             JButton clickedButton = (JButton) e.getSource();
 
-           // ((JButton) e.getSource()).setForeground(Color.red);
+            // ((JButton) e.getSource()).setForeground(Color.red);
 
             String buttonText = clickedButton.getText();
 
@@ -133,31 +124,35 @@ public class GameWindow extends JFrame implements ActionListener {
 
             System.out.println("Button Clicked: " + buttonText);
 
+            // Check to see if mine has been placed at that area already
+            if (hasBeenClicked(buttonNumber)) {
+                // Player died, show pop-up window
 
-            //check to see if mine has been placed at that area already
-            if(HasBeenClicked(buttonNumber)){
+                if(currentPlayerBoolean){
 
-                System.out.println("a mine has been placed here, you are dead");
+                }
 
 
-            }else{
+                JOptionPane.showMessageDialog(this, "You died!", "Game Over", JOptionPane.INFORMATION_MESSAGE);
 
+                // Reset the game
+                placedMineArray.clear();
+                currentPlayerBoolean = true;
+                PlayerItem.setText("Player1");
+            } else {
                 placedMineArray.add(buttonNumber);
                 System.out.println(placedMineArray);
             }
-            if(currentPlayer){
+            if (currentPlayerBoolean) {
                 PlayerItem.setText("Player2");
-                currentPlayer = !currentPlayer;
+                currentPlayerBoolean = !currentPlayerBoolean;
             } else {
                 PlayerItem.setText("Player1");
-                currentPlayer = !currentPlayer;
+                currentPlayerBoolean = !currentPlayerBoolean;
             }
-
-
         }
 
-
-        if (e.getSource() == StartServerItem){
+        if (e.getSource() == StartServerItem) {
             System.out.println("Starting Server...");
             try {
                 Server.startServer();
@@ -165,7 +160,7 @@ public class GameWindow extends JFrame implements ActionListener {
                 throw new RuntimeException(ex);
             }
 
-            //ServerInfo InfoWindow = new ServerInfo();
+            // ServerInfo InfoWindow = new ServerInfo();
         }
     }
 }
