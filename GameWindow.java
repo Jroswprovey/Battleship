@@ -46,7 +46,7 @@ public class GameWindow extends JFrame implements ActionListener {
 
         StartItem.addActionListener(this);
         ConnectItem.addActionListener(this);
-        //StartServerItem.addActionListener(this);
+        StartServerItem.addActionListener(this);
 
         MenuBar.add(PlayerItem);
         GameMenu.add(StartItem);
@@ -136,7 +136,7 @@ public class GameWindow extends JFrame implements ActionListener {
                     throw new RuntimeException(ex);
                 }
 
-                JOptionPane.showMessageDialog(this, "You died!", "Game Over", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "You died!", "Game Over", JOptionPane.WARNING_MESSAGE);
 
                 // Reset the game
                 placedMineArray.clear();
@@ -156,11 +156,12 @@ public class GameWindow extends JFrame implements ActionListener {
 
         if (e.getSource() == StartServerItem) {
             System.out.println("Starting Server...");
-            try {
+            JOptionPane.showMessageDialog(this, "Server functionality disabled on school WiFi!", "Option Disabled", JOptionPane.INFORMATION_MESSAGE);
+           /* try {
                 Server.startServer();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
-            }
+            }*/
 
             // ServerInfo InfoWindow = new ServerInfo();
         }
