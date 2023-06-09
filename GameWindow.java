@@ -1,3 +1,5 @@
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,7 +22,7 @@ public class GameWindow extends JFrame implements ActionListener {
     JPanel Game;
     JPanel Chat;
 
-    ArrayList<Integer> placedMineArray = new ArrayList<Integer>();
+    ArrayList<Integer> placedMineArray = new ArrayList<>();
 
     boolean currentPlayerBoolean = true; //true = Player1 False = Player2
 
@@ -93,8 +95,8 @@ public class GameWindow extends JFrame implements ActionListener {
     }
 
     public boolean hasBeenClicked(int pushedButton) {
-        for (int i = 0; i < placedMineArray.size(); i++) {
-            if (pushedButton == placedMineArray.get(i)) {
+        for (Integer integer : placedMineArray) {
+            if (pushedButton == integer) {
                 return true;
             }
         }
@@ -113,8 +115,7 @@ public class GameWindow extends JFrame implements ActionListener {
             ConnectWindow.setVisible(true);
         }
 
-        if (e.getSource() instanceof JButton) {
-            JButton clickedButton = (JButton) e.getSource();
+        if (e.getSource() instanceof JButton clickedButton) {
 
             // ((JButton) e.getSource()).setForeground(Color.red);
 
@@ -128,13 +129,13 @@ public class GameWindow extends JFrame implements ActionListener {
             if (hasBeenClicked(buttonNumber)) {
                 // Player died, show pop-up window
 
-                if(currentPlayerBoolean){
-
-                }
-
 
                 JOptionPane.showMessageDialog(this, "You died!", "Game Over", JOptionPane.INFORMATION_MESSAGE);
-
+                try {
+                    playSound.playBomb();
+                } catch (UnsupportedAudioFileException | LineUnavailableException | IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 // Reset the game
                 placedMineArray.clear();
                 currentPlayerBoolean = true;
@@ -145,11 +146,10 @@ public class GameWindow extends JFrame implements ActionListener {
             }
             if (currentPlayerBoolean) {
                 PlayerItem.setText("Player2");
-                currentPlayerBoolean = !currentPlayerBoolean;
             } else {
                 PlayerItem.setText("Player1");
-                currentPlayerBoolean = !currentPlayerBoolean;
             }
+            currentPlayerBoolean = !currentPlayerBoolean;
         }
 
         if (e.getSource() == StartServerItem) {
